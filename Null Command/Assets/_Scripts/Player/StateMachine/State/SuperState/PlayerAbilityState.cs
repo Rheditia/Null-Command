@@ -30,14 +30,17 @@ public abstract class PlayerAbilityState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (player.CheckIfGrounded())
+        if (isAbilityDone)
         {
-            if (Mathf.Abs(inputHandler.MoveInput.x) > Mathf.Epsilon) { stateMachine.ChangeState(player.MoveState); }
-            else if (Mathf.Abs(inputHandler.MoveInput.x) < Mathf.Epsilon) { stateMachine.ChangeState(player.IdleState); }
-        }
-        else if (!player.CheckIfGrounded())
-        {
-            stateMachine.ChangeState(player.InAirState);
+            if (player.CheckIfGrounded())
+            {
+                if (Mathf.Abs(inputHandler.MoveInput.x) > Mathf.Epsilon) { stateMachine.ChangeState(player.MoveState); }
+                else if (Mathf.Abs(inputHandler.MoveInput.x) < Mathf.Epsilon) { stateMachine.ChangeState(player.IdleState); }
+            }
+            else if (!player.CheckIfGrounded())
+            {
+                stateMachine.ChangeState(player.InAirState);
+            }
         }
     }
 

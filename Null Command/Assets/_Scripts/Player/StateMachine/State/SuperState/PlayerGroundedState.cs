@@ -29,6 +29,10 @@ public abstract class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(player.JumpState);
         }
+        else if (inputHandler.InteractInput)
+        {
+            stateMachine.ChangeState(player.InterractState);
+        }
         else if (!player.CheckIfGrounded() && locomotion.VerticalVelocity < 0)
         {
             stateMachine.ChangeState(player.InAirState);

@@ -10,11 +10,12 @@ public class Player : MonoBehaviour
     public PlayerMoveState MoveState { get; private set; }
     public PlayerInAirState InAirState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
+    public PlayerInterractState InterractState { get; private set; }
     #endregion
 
     #region Component
     [SerializeField] PlayerDataSO playerData;
-    public Animator Animator { get; private set; }
+    public Animator Anim { get; private set; }
     private BoxCollider2D myCollider;
     public PlayerInputHandler InputHandler { get; private set; }
     public PlayerLocomotion Locomotion { get; private set; }
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
-        Animator = GetComponent<Animator>();
+        Anim = GetComponent<Animator>();
         myCollider = GetComponent<BoxCollider2D>();
         InputHandler = GetComponent<PlayerInputHandler>();
         Locomotion = GetComponent<PlayerLocomotion>();
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
         InAirState = new PlayerInAirState(this, StateMachine, playerData, "inAir");
         JumpState = new PlayerJumpState(this, StateMachine, playerData, "inAir");
+        InterractState = new PlayerInterractState(this, StateMachine, playerData, "interact");
     }
 
     private void Start()

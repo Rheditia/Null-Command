@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInterractState : MonoBehaviour
+public class PlayerInterractState : PlayerAbilityState
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerInterractState(Player player, PlayerStateMachine stateMachine, PlayerDataSO playerData, string animationBool) : base(player, stateMachine, playerData, animationBool)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
-        
+        base.Enter();
+        locomotion.SetHorizontalVelocity(0f, inputHandler.MoveInput.x);
+        inputHandler.ClearInteractBuffer();
+
+        //TODO add method that will activate lever/interactible
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+        if(player.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        {
+            isAbilityDone = true;
+        }
     }
 }

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Interract
+  m_Name: Interact
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,11 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 6378490070600606727, guid: e82a355796565e548877ea7860a742b6, type: 3}
-    - time: 0.16666667
+    - time: 0.083333336
       value: {fileID: 1760990019816550413, guid: e82a355796565e548877ea7860a742b6, type: 3}
-    - time: 0.33333334
+    - time: 0.16666667
       value: {fileID: 5920403861974754022, guid: e82a355796565e548877ea7860a742b6, type: 3}
-    - time: 0.5
+    - time: 0.25
       value: {fileID: -3892527970579685584, guid: e82a355796565e548877ea7860a742b6, type: 3}
     attribute: m_Sprite
     path: Player GFX
@@ -55,7 +55,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.51666665
+    m_StopTime: 0.26666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

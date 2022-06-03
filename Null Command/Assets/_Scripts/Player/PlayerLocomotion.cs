@@ -14,13 +14,13 @@ public class PlayerLocomotion : MonoBehaviour
     {
         Vector2 newVelocity = new Vector2(velocity * horizontalInput, myRigidbody.velocity.y);
         myRigidbody.velocity = newVelocity;
-        Flip(horizontalInput);
+        if(horizontalInput != 0) { Flip(horizontalInput); }
     }
 
     private void Flip(float input)
     {
         if (Mathf.Abs(input) <= Mathf.Epsilon) { return; }
-        transform.localScale = new Vector3(Mathf.Sign(myRigidbody.velocity.x), 1, 1);
+        transform.localScale = new Vector3(Mathf.Sign(input), 1, 1);
     }
 
     public void SetVerticalVelocity(float velocity)

@@ -19,7 +19,7 @@ public abstract class PlayerState
 
     public virtual void Enter()
     {
-        player.Animator.SetBool(animationBool, true);
+        player.Anim.SetBool(animationBool, true);
         //Debug.Log(animationBool);
     }
 
@@ -35,6 +35,6 @@ public abstract class PlayerState
 
     public virtual void Exit()
     {
-        player.Animator.SetBool(animationBool, false);
+        player.Anim.SetBool(animationBool, false);
     }
 }
