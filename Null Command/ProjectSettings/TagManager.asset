@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - ConveyorBelt
+  - PressurePlate
+  - Interactible
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - Interractible
   - Player
   - Lever
-  - 
-  - 
+  - CameraConfiner
+  - PressurePlate
   - 
   - 
   - 
