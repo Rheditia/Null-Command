@@ -55,6 +55,11 @@ public class Player : MonoBehaviour
     {
         StateMachine.CurrentState.PhysicsUpdate();
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
     #endregion
 
     public bool CheckIfGrounded()
