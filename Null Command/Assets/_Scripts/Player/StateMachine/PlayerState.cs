@@ -20,6 +20,7 @@ public abstract class PlayerState
     public virtual void Enter()
     {
         player.Animator.SetBool(animationBool, true);
+        //Debug.Log(animationBool);
     }
 
     public virtual void LogicUpdate()

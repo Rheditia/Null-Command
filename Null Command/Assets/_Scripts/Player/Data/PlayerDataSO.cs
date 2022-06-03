@@ -10,11 +10,11 @@ public class PlayerDataSO : ScriptableObject
     [SerializeField] float jumpSpeed = 0f;
 
     [Header("Checks")]
-    [SerializeField] float groundCheckRadius = 0f;
+    [SerializeField] Vector2 groundCheckSize;
     [SerializeField] LayerMask platformLayer;
 
     public float MoveSpeed => moveSpeed;
     public float JumpSpeed => jumpSpeed;
-    public float GroundCheckRadius => groundCheckRadius;
+    public Vector2 GroundCheckSize => groundCheckSize;
     public LayerMask PlatformLayer => platformLayer;
 }

@@ -28,4 +28,6 @@ public class PlayerLocomotion : MonoBehaviour
         Vector2 newVelocity = new Vector2(myRigidbody.velocity.x, velocity);
         myRigidbody.velocity = newVelocity;
     }
+
+    public float VerticalVelocity => myRigidbody.velocity.y;
 }
