@@ -67,6 +67,16 @@ public class Player : MonoBehaviour
         return Physics2D.OverlapBox(groundCheckPosition.position, playerData.GroundCheckSize, 0, playerData.PlatformLayer);
     }
 
+    public void SetSwitch()
+    {
+        Collider2D switchControl = Physics2D.OverlapBox(transform.position, myCollider.size, 0, playerData.SwitchLayer);
+        if(switchControl != null)
+        {
+            Switch switchComponent = switchControl.GetComponent<Switch>();
+            switchComponent.IsActive = !switchComponent.IsActive;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;

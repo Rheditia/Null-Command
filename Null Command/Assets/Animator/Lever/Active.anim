@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Interact
+  m_Name: Active
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,15 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 6378490070600606727, guid: e82a355796565e548877ea7860a742b6, type: 3}
+      value: {fileID: -1494352897237206093, guid: a7d94998a9ad5194eadd381971bea4a9, type: 3}
     - time: 0.083333336
-      value: {fileID: 1760990019816550413, guid: e82a355796565e548877ea7860a742b6, type: 3}
+      value: {fileID: 5207117429831932417, guid: a7d94998a9ad5194eadd381971bea4a9, type: 3}
     - time: 0.16666667
-      value: {fileID: 5920403861974754022, guid: e82a355796565e548877ea7860a742b6, type: 3}
+      value: {fileID: 1037834685027545754, guid: a7d94998a9ad5194eadd381971bea4a9, type: 3}
     - time: 0.25
-      value: {fileID: -3892527970579685584, guid: e82a355796565e548877ea7860a742b6, type: 3}
+      value: {fileID: -4284778255937859276, guid: a7d94998a9ad5194eadd381971bea4a9, type: 3}
     attribute: m_Sprite
-    path: Player GFX
+    path: 
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -39,17 +39,17 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1210548523
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 6378490070600606727, guid: e82a355796565e548877ea7860a742b6, type: 3}
-    - {fileID: 1760990019816550413, guid: e82a355796565e548877ea7860a742b6, type: 3}
-    - {fileID: 5920403861974754022, guid: e82a355796565e548877ea7860a742b6, type: 3}
-    - {fileID: -3892527970579685584, guid: e82a355796565e548877ea7860a742b6, type: 3}
+    - {fileID: -1494352897237206093, guid: a7d94998a9ad5194eadd381971bea4a9, type: 3}
+    - {fileID: 5207117429831932417, guid: a7d94998a9ad5194eadd381971bea4a9, type: 3}
+    - {fileID: 1037834685027545754, guid: a7d94998a9ad5194eadd381971bea4a9, type: 3}
+    - {fileID: -4284778255937859276, guid: a7d94998a9ad5194eadd381971bea4a9, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -74,11 +74,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.25
-    functionName: SetSwitch
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

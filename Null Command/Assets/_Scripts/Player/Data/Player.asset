@@ -18,4 +18,6 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 64
-  interactDuration: 0.3
+  switchLayer:
+    serializedVersion: 2
+    m_Bits: 1024

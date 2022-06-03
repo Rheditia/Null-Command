@@ -2,32 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConveyorBelt : MonoBehaviour
+public class ConveyorBelt : InteractiblePlatform
 {
-    Animator anim;
     SurfaceEffector2D surfaceEffector;
 
-    [SerializeField] bool isActive;
-
-    private void Awake()
+    protected override void Awake()
     {
-        anim = GetComponent<Animator>();
+        base.Awake();
         surfaceEffector = GetComponent<SurfaceEffector2D>();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         surfaceEffector.speed = surfaceEffector.speed * transform.localScale.x;
-        anim.SetBool("active", isActive);
-        surfaceEffector.enabled = isActive;
+        anim.SetBool("active", IsActive);
+        surfaceEffector.enabled = IsActive;
     }
 
     private void Update()
     {
-        if (anim.GetBool("active") != isActive)
+        if (anim.GetBool("active") != IsActive)
         {
-            anim.SetBool("active", isActive);
-            surfaceEffector.enabled = isActive;
+            anim.SetBool("active", IsActive);
+            surfaceEffector.enabled = IsActive;
         }
     }
 }
