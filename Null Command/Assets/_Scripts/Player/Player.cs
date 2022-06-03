@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     #region StateMachine
     public PlayerStateMachine StateMachine { get; private set; }
+    public PlayerIdleState IdleState { get; private set; }
+    public PlayerMoveState MoveState { get; private set; }
     #endregion
 
     #region Component
@@ -24,21 +26,24 @@ public class Player : MonoBehaviour
         myCollider = GetComponent<BoxCollider2D>();
         InputHandler = GetComponent<PlayerInputHandler>();
         Locomotion = GetComponent<PlayerLocomotion>();
+
+        IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
+        MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
     }
 
     private void Start()
     {
-        // TODO Add starting state
+        StateMachine.InitializeState(IdleState);
     }
 
     private void Update()
     {
-        //StateMachine.CurrentState.LogicUpdate();
+        StateMachine.CurrentState.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
-        //StateMachine.CurrentState.PhysicsUpdate();
+        StateMachine.CurrentState.PhysicsUpdate();
     }
     #endregion
 }

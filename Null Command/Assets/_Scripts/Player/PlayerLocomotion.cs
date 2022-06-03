@@ -12,7 +12,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void SetHorizontalVelocity(float velocity, float horizontalInput)
     {
-        Vector2 newVelocity = new Vector2(velocity * Mathf.Round(horizontalInput), myRigidbody.velocity.y);
+        Vector2 newVelocity = new Vector2(velocity * horizontalInput, myRigidbody.velocity.y);
         myRigidbody.velocity = newVelocity;
         Flip(horizontalInput);
     }
