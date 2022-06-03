@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Interract",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "1314be7f-028b-4f2a-bdba-98430a2c849d",
                     "expectedControlType": "Button",
@@ -171,7 +171,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interract",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -9,29 +9,29 @@ public class PlayerInputHandler : MonoBehaviour
     PlayerInput input;
     InputAction moveAction;
     InputAction jumpAction;
-    InputAction interractAction;
+    InputAction interactAction;
 
     public Vector2 MoveInput { get; private set; }
     public bool JumpInput => jumpBufferTimer > 0;
     [SerializeField] float jumpBufferDuration = 0.2f;
     private float jumpBufferTimer = 0f;
 
-    public bool InterractInput => interractBufferTimer > 0;
-    [SerializeField] float interractBufferDuration = 0.2f;
-    private float interractBufferTimer = 0f;
+    public bool InteractInput => interactBufferTimer > 0;
+    [SerializeField] float interactBufferDuration = 0.2f;
+    private float interactBufferTimer = 0f;
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
         moveAction = input.actions["Move"];
         jumpAction = input.actions["Jump"];
-        interractAction = input.actions["Interract"];
+        interactAction = input.actions["Interact"];
     }
 
     private void Update()
     {
         JumpBufferCountdown();
-        InterractBufferCountdown();
+        InteractBufferCountdown();
     }
 
     private void OnEnable()
@@ -43,8 +43,8 @@ public class PlayerInputHandler : MonoBehaviour
         jumpAction.started += OnJumpInput;
         jumpAction.canceled += OnJumpInput;
 
-        interractAction.started += OnInterractAction;
-        interractAction.canceled += OnInterractAction;
+        interactAction.started += OnInterractAction;
+        interactAction.canceled += OnInterractAction;
     }
 
     private void OnDisable()
@@ -56,8 +56,8 @@ public class PlayerInputHandler : MonoBehaviour
         jumpAction.started -= OnJumpInput;
         jumpAction.canceled -= OnJumpInput;
 
-        interractAction.started -= OnInterractAction;
-        interractAction.canceled -= OnInterractAction;
+        interactAction.started -= OnInterractAction;
+        interactAction.canceled -= OnInterractAction;
     }
 
     private void OnMoveInput(InputAction.CallbackContext context)
@@ -80,14 +80,14 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnInterractAction(InputAction.CallbackContext context)
     {
-        if (context.started) { interractBufferTimer = interractBufferDuration; }
+        if (context.started) { interactBufferTimer = interactBufferDuration; }
     }
 
-    private void InterractBufferCountdown()
+    private void InteractBufferCountdown()
     {
-        if (interractBufferTimer > 0) { interractBufferTimer -= Time.deltaTime; }
+        if (interactBufferTimer > 0) { interactBufferTimer -= Time.deltaTime; }
         else { return; }
     }
 
-    public void ClearInterractBuffer() => interractBufferTimer = 0f;
+    public void ClearInteractBuffer() => interactBufferTimer = 0f;
 }
