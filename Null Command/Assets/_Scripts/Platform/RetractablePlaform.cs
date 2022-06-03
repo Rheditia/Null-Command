@@ -2,32 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConveyorBelt : MonoBehaviour
+public class RetractablePlaform : MonoBehaviour
 {
     Animator anim;
-    SurfaceEffector2D surfaceEffector;
+    BoxCollider2D boxCollider;
 
     [SerializeField] bool isActive;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        surfaceEffector = GetComponent<SurfaceEffector2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Start()
     {
-        surfaceEffector.speed = surfaceEffector.speed * transform.localScale.x;
         anim.SetBool("active", isActive);
-        surfaceEffector.enabled = isActive;
+        boxCollider.enabled = isActive;
     }
 
     private void Update()
     {
-        if (anim.GetBool("active") != isActive)
+        if(anim.GetBool("active") != isActive)
         {
             anim.SetBool("active", isActive);
-            surfaceEffector.enabled = isActive;
+            boxCollider.enabled = isActive;
         }
     }
 }
