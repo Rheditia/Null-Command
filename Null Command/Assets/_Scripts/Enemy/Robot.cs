@@ -6,6 +6,8 @@ public class Robot : MonoBehaviour
 {
     #region StateMachine
     public RobotStateMachine StateMachine { get; private set; }
+    public RobotIdleState IdleState { get; private set; }
+    public RobotMoveState MoveState { get; private set; }
     #endregion
 
     #region Component
@@ -14,8 +16,11 @@ public class Robot : MonoBehaviour
     private BoxCollider2D myCollider;
     public RobotLocomotion Locomotion { get; private set; }
     #endregion
-
+    [SerializeField] Transform wallCheckPosition;
+    [SerializeField] Transform ledgeCheckPosition;
     #region Variable
+    public bool Patrol => patrolTimer < 0;
+    private float patrolTimer;
     #endregion
 
     #region UnityCallbacks
@@ -25,21 +30,57 @@ public class Robot : MonoBehaviour
         Anim = GetComponent<Animator>();
         myCollider = GetComponent<BoxCollider2D>();
         Locomotion = GetComponent<RobotLocomotion>();
+
+        IdleState = new RobotIdleState(this, StateMachine, robotData, "idle");
+        MoveState = new RobotMoveState(this, StateMachine, robotData, "move");
     }
 
     private void Start()
     {
-        //TODO Initialize state
+        patrolTimer = robotData.PatrolDelay;
+        StateMachine.InitializeState(IdleState);
     }
 
     private void Update()
     {
-        //StateMachine.CurrentState.LogicUpdate();
+        StateMachine.CurrentState.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
-        //StateMachine.CurrentState.PhysicsUpdate();
+        StateMachine.CurrentState.PhysicsUpdate();
     }
     #endregion
+
+    #region Checks
+    public bool CheckIfTouchingWall()
+    {
+        return Physics2D.Raycast(wallCheckPosition.position, Vector2.right * transform.localScale.x, robotData.WallCheckLength, robotData.PlatformLayer);
+    }
+
+    public bool CheckIfOnLedge()
+    {
+        return Physics2D.Raycast(ledgeCheckPosition.position, Vector2.down, robotData.LedgeCheckLength, robotData.PlatformLayer);
+    }
+    #endregion
+
+    #region Other Functions
+    public void PatrolTimerCountdown()
+    {
+        if(patrolTimer > 0) { patrolTimer -= Time.deltaTime; }
+        else { return; }
+    }
+
+    public void ResetPatrolTimer()
+    {
+        patrolTimer = robotData.PatrolDelay;
+    }
+    #endregion
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(wallCheckPosition.position, wallCheckPosition.position + (Vector3.right * transform.localScale.x) * robotData.WallCheckLength);
+        Gizmos.DrawLine(ledgeCheckPosition.position, ledgeCheckPosition.position + Vector3.down * robotData.LedgeCheckLength);
+    }
 }

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Walker
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  wallCheckLength: 1
-  ledgeCheckLength: 1
+  patrolDelay: 2
+  wallCheckLength: 0.25
+  ledgeCheckLength: 0.25
   platformLayer:
     serializedVersion: 2
     m_Bits: 64

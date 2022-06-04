@@ -11,7 +11,6 @@ public class PlayerMoveState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        locomotion.SetHorizontalVelocity(0f, inputHandler.MoveInput.x);
     }
 
     public override void Exit()

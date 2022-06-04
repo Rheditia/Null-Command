@@ -7,6 +7,7 @@ public class RobotDataSO : ScriptableObject
 {
     [Header("Locomotion")]
     [SerializeField] float moveSpeed = 0f;
+    [SerializeField] float patrolDelay = 3f;
 
     [Header("Checks")]
     [SerializeField] float wallCheckLength;
@@ -14,6 +15,7 @@ public class RobotDataSO : ScriptableObject
     [SerializeField] LayerMask platformLayer;
 
     public float MoveSpeed => moveSpeed;
+    public float PatrolDelay => patrolDelay;
     public float WallCheckLength => wallCheckLength;
     public float LedgeCheckLength => ledgeCheckLength;
     public LayerMask PlatformLayer => platformLayer;
