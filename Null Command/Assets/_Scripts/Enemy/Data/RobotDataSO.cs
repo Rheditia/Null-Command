@@ -10,12 +10,14 @@ public class RobotDataSO : ScriptableObject
     [SerializeField] float patrolDelay = 3f;
 
     [Header("Checks")]
+    [SerializeField] Vector2 groundCheckSize;
     [SerializeField] float wallCheckLength;
     [SerializeField] float ledgeCheckLength;
     [SerializeField] LayerMask platformLayer;
 
     public float MoveSpeed => moveSpeed;
     public float PatrolDelay => patrolDelay;
+    public Vector2 GroundCheckSize => groundCheckSize;
     public float WallCheckLength => wallCheckLength;
     public float LedgeCheckLength => ledgeCheckLength;
     public LayerMask PlatformLayer => platformLayer;

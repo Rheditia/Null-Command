@@ -16,9 +16,11 @@ public class Robot : MonoBehaviour
     private BoxCollider2D myCollider;
     public RobotLocomotion Locomotion { get; private set; }
     #endregion
+
+    #region Variable
     [SerializeField] Transform wallCheckPosition;
     [SerializeField] Transform ledgeCheckPosition;
-    #region Variable
+    [SerializeField] Transform groundCheckPosition;
     public bool Patrol => patrolTimer < 0;
     private float patrolTimer;
     #endregion
@@ -53,6 +55,10 @@ public class Robot : MonoBehaviour
     #endregion
 
     #region Checks
+    public bool CheckIfGrounded()
+    {
+        return Physics2D.OverlapBox(groundCheckPosition.position, robotData.GroundCheckSize, 0, robotData.PlatformLayer);
+    }
     public bool CheckIfTouchingWall()
     {
         return Physics2D.Raycast(wallCheckPosition.position, Vector2.right * transform.localScale.x, robotData.WallCheckLength, robotData.PlatformLayer);
@@ -82,5 +88,7 @@ public class Robot : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(wallCheckPosition.position, wallCheckPosition.position + (Vector3.right * transform.localScale.x) * robotData.WallCheckLength);
         Gizmos.DrawLine(ledgeCheckPosition.position, ledgeCheckPosition.position + Vector3.down * robotData.LedgeCheckLength);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(groundCheckPosition.position, robotData.GroundCheckSize);
     }
 }

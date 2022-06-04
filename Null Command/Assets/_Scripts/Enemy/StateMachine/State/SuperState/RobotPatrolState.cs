@@ -24,7 +24,7 @@ public class RobotPatrolState : RobotState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if(robot.CheckIfTouchingWall() || !robot.CheckIfOnLedge())
+        if((robot.CheckIfTouchingWall() || !robot.CheckIfOnLedge()) && robot.CheckIfGrounded())
         {
             robot.transform.localScale = new Vector3(-robot.transform.localScale.x, 1, 1);
         }

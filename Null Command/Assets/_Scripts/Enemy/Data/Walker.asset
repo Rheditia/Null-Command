@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   patrolDelay: 2
+  groundCheckSize: {x: 0.75, y: 0.1}
   wallCheckLength: 0.25
   ledgeCheckLength: 0.25
   platformLayer:
