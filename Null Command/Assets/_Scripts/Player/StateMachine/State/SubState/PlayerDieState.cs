@@ -15,6 +15,7 @@ public class PlayerDieState : PlayerState
         base.Enter();
         base.Enter();
         locomotion = player.Locomotion;
+        locomotion.SetHorizontalVelocity(0f, 0);
 
         player.Die();
     }

@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
         JumpState = new PlayerJumpState(this, StateMachine, playerData, "inAir");
         InterractState = new PlayerInterractState(this, StateMachine, playerData, "interact");
         DieState = new PlayerDieState(this, StateMachine, playerData, "die");
+
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Hazard"), false);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), false);
     }
 
     private void Start()
@@ -62,9 +65,9 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Hazard"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Hazard") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Physics2D.IgnoreLayerCollision(gameObject.layer, collision.gameObject.layer);
+            Physics2D.IgnoreLayerCollision(gameObject.layer, collision.gameObject.layer, true);
             IsAlive = false;
         }
     }
