@@ -18,6 +18,10 @@ public class Switch : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         platforms = GetComponentsInChildren<InteractiblePlatform>();
+        foreach (InteractiblePlatform platform in platforms)
+        {
+            platform.IsActive = isActive;
+        }
     }
 
     protected virtual void Start()
