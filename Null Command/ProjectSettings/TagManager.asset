@@ -50,3 +50,18 @@ TagManager:
   - name: Platform
     uniqueID: 4187077339
     locked: 0
+  - name: Hazard
+    uniqueID: 3276418271
+    locked: 0
+  - name: Interactible
+    uniqueID: 901287959
+    locked: 0
+  - name: Switch
+    uniqueID: 344094141
+    locked: 0
+  - name: Player
+    uniqueID: 2155499339
+    locked: 0
+  - name: Enemy
+    uniqueID: 3248588417
+    locked: 0

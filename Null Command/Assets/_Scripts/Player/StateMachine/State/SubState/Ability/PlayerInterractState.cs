@@ -13,8 +13,6 @@ public class PlayerInterractState : PlayerAbilityState
         base.Enter();
         locomotion.SetHorizontalVelocity(0f, inputHandler.MoveInput.x);
         inputHandler.ClearInteractBuffer();
-
-        //TODO add method that will activate lever/interactible
     }
 
     public override void LogicUpdate()

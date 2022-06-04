@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public PlayerInAirState InAirState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerInterractState InterractState { get; private set; }
+    public PlayerDieState DieState { get; private set; }
     #endregion
 
     #region Component
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
 
     #region Variable
     [SerializeField] Transform groundCheckPosition;
+    public bool IsAlive { get; private set; }
     #endregion
 
     #region UnityCallbacks
@@ -39,10 +41,12 @@ public class Player : MonoBehaviour
         InAirState = new PlayerInAirState(this, StateMachine, playerData, "inAir");
         JumpState = new PlayerJumpState(this, StateMachine, playerData, "inAir");
         InterractState = new PlayerInterractState(this, StateMachine, playerData, "interact");
+        DieState = new PlayerDieState(this, StateMachine, playerData, "die");
     }
 
     private void Start()
     {
+        IsAlive = true;
         StateMachine.InitializeState(IdleState);
     }
 
@@ -58,9 +62,18 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Hazard"))
+        {
+            Physics2D.IgnoreLayerCollision(gameObject.layer, collision.gameObject.layer);
+            IsAlive = false;
+        }
     }
     #endregion
+
+    public void Die()
+    {
+        Destroy(gameObject, 1f);
+    }
 
     public bool CheckIfGrounded()
     {
