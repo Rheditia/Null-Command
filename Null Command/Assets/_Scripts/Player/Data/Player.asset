@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpSpeed: 12
-  groundCheckSize: {x: 0.54, y: 0.07}
+  groundCheckSize: {x: 0.53, y: 0.07}
   platformLayer:
     serializedVersion: 2
     m_Bits: 320

@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D myCollider;
     public PlayerInputHandler InputHandler { get; private set; }
     public PlayerLocomotion Locomotion { get; private set; }
+    private LevelManager levelManager;
     #endregion
 
     #region Variable
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         myCollider = GetComponent<BoxCollider2D>();
         InputHandler = GetComponent<PlayerInputHandler>();
         Locomotion = GetComponent<PlayerLocomotion>();
+        levelManager = FindObjectOfType<LevelManager>();
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
@@ -75,7 +77,14 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject, 1f);
+        StartCoroutine(ProcessDeath());
+    }
+
+    private IEnumerator ProcessDeath()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+        levelManager.ResetLevel();
     }
 
     public bool CheckIfGrounded()
