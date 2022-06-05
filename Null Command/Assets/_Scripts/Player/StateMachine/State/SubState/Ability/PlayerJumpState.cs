@@ -13,6 +13,7 @@ public class PlayerJumpState : PlayerAbilityState
         base.Enter();
         inputHandler.ClearJumpBuffer();
 
+        player.audioPlayer.PlayJumpClip();
         locomotion.SetVerticalVelocity(playerData.JumpSpeed);
         isAbilityDone = true;
     }

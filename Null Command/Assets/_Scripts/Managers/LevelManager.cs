@@ -7,29 +7,29 @@ public class LevelManager : MonoBehaviour
 {
     static LevelManager Instance;
 
-    private void Awake()
+    public void LoadMainMenu()
     {
-        ManageSingleton();
+        SceneManager.LoadScene("Mainmenu");
     }
 
-    private void ManageSingleton()
+    public void LoadCredit()
     {
-        if (Instance != null)
-        {
-            gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        SceneManager.LoadScene("Credit");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void ChangeLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings - 2)
+        {
+            FindObjectOfType<AudioPlayer>().ResetAudio();
+        }
         SceneManager.LoadScene(nextSceneIndex);
     }
 

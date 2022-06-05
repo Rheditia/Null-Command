@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public PlayerInputHandler InputHandler { get; private set; }
     public PlayerLocomotion Locomotion { get; private set; }
     private LevelManager levelManager;
+    public AudioPlayer audioPlayer { get; private set; }
     #endregion
 
     #region Variable
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
         InputHandler = GetComponent<PlayerInputHandler>();
         Locomotion = GetComponent<PlayerLocomotion>();
         levelManager = FindObjectOfType<LevelManager>();
+        audioPlayer = FindObjectOfType<AudioPlayer>();
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
